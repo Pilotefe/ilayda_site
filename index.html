@@ -1,78 +1,14 @@
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>28 Temmuz 23:01</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #b3d9f7;
-      color: #222;
-    }
-    header {
-      text-align: center;
-      padding: 60px 20px 30px;
-    }
-    header h1 {
-      font-size: 2.5em;
-      margin: 0;
-    }
-    section {
-      padding: 30px 20px;
-      max-width: 800px;
-      margin: auto;
-    }
-    .timeline {
-      background: rgba(255, 255, 255, 0.7);
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      margin-bottom: 40px;
-    }
-    .timeline h2 {
-      margin-top: 0;
-    }
-    .timeline ul {
-      list-style: none;
-      padding-left: 0;
-    }
-    .timeline li {
-      margin-bottom: 10px;
-    }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-      gap: 10px;
-    }
-    .gallery img {
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-    }
-    .letter {
-      background: rgba(255,255,255,0.8);
-      padding: 25px;
-      border-radius: 15px;
-      white-space: pre-line;
-    }
-    footer {
-      text-align: center;
-      padding: 40px 20px;
-      font-style: italic;
-      opacity: 0.7;
-    }
-    audio {
-      display: none;
-    }
-  </style>
+  <link rel="stylesheet" href="index.css" />
 </head>
 <body>
   <audio autoplay loop id="bgm">
-    <source src="song.mp3" type="audio/mpeg">
+    <source src="song.mp3" type="audio/mpeg" />
     Tarayıcınız ses çalmayı desteklemiyor.
   </audio>
 
@@ -90,32 +26,53 @@
     </ul>
   </section>
 
-  <section class="gallery">
-  <script>
-    for (let i = 1; i <= 40; i++) {
-      document.write(`<img src="img/${i}.jpg" alt="Anı ${i}">`);
-    }
-  </script>
-</section>
-
+  <section class="gallery slider">
+    <button class="nav-arrow nav-left" aria-label="Önceki">&#10094;</button>
+    <img id="sliderImage" src="img/1.jpg" alt="Anı 1" />
+    <button class="nav-arrow nav-right" aria-label="Sonraki">&#10095;</button>
+  </section>
 
   <section class="letter">
     <h2>Kalpten Bir Yazı</h2>
     <p>
-Seni tanıdığımda hayatımda pek de iyi bir yerde değildim. Duygusal olarak yorgun, kendimle uğraşan biriydim. Ama sen öyle hızlı, öyle güzel bir şekilde geldin ki toparlanmamı sağladın. Hatta sadece toparlanmak değil, daha önce hissetmediğim bir huzuru hissettirdin bana.
+      Seni tanıdığımda hayatımda pek de iyi bir yerde değildim. Duygusal olarak yorgun, kendimle uğraşan biriydim. Ama sen öyle hızlı, öyle güzel bir şekilde geldin ki toparlanmamı sağladın. Hatta sadece toparlanmak değil, daha önce hissetmediğim bir huzuru hissettirdin bana.
 
-Bu bir yıl boyunca sevgim hep arttı. Evet, bazen kırgınlıklarımız oldu, tartıştık, hatta uzak kaldık... ama hiçbir zaman sevgim azalmadı. Çünkü sende bana iyi gelen bir şey vardı, bir ışık gibi. Ne yaşarsak yaşayalım, içimde hep o saf sevgi kalmaya devam etti.
+      Bu bir yıl boyunca sevgim hep arttı. Evet, bazen kırgınlıklarımız oldu, tartıştık, hatta uzak kaldık... ama hiçbir zaman sevgim azalmadı. Çünkü sende bana iyi gelen bir şey vardı, bir ışık gibi. Ne yaşarsak yaşayalım, içimde hep o saf sevgi kalmaya devam etti.
 
-En unutamadığım anlardan biri... daha beni hiç görmemişken, doğum günümde bana gönderdiğin o mesaj ve aldığın Lego hediyesiydi. O kadar ince düşünülmüştü ki, kalbimin içinde bir yere kazındı.
+      En unutamadığım anlardan biri... daha beni hiç görmemişken, doğum günümde bana gönderdiğin o mesaj ve aldığın Lego hediyesiydi. O kadar ince düşünülmüştü ki, kalbimin içinde bir yere kazındı.
 
-Şimdi her şey eskisi gibi olmasa da, hala hayatımdasın. Hala konuşuyoruz, sesini duyuyorum, bazen gülümsüyoruz. Her şeye rağmen kopmamış olmak bile bana yetiyor çoğu zaman.
+      Şimdi her şey eskisi gibi olmasa da, hala hayatımdasın. Hala konuşuyoruz, sesini duyuyorum, bazen gülümsüyoruz. Her şeye rağmen kopmamış olmak bile bana yetiyor çoğu zaman.
 
-Belki nereye gideceğimizi bilmiyoruz, belki bazı şeyler hala havada. Ama içimdeki yerin hala sabit. Zamanla, belki daha da sağlamlaşır. Belki de her şey yeniden daha güzel olur. Bilmiyorum. Ama bildiğim bir şey varsa; seni iyi ki tanıdım.
+      Belki nereye gideceğimizi bilmiyoruz, belki bazı şeyler hala havada. Ama içimdeki yerin hala sabit. Zamanla, belki daha da sağlamlaşır. Belki de her şey yeniden daha güzel olur. Bilmiyorum. Ama bildiğim bir şey varsa; seni iyi ki tanıdım.
     </p>
   </section>
 
   <footer>
     "Bu sadece bir yıl değil aksine içimde büyüyen bir hikayeydi."
   </footer>
+
+  <script>
+    const totalImages = 40;
+    let currentIndex = 1;
+
+    const sliderImage = document.getElementById('sliderImage');
+    const prevBtn = document.querySelector('.nav-left');
+    const nextBtn = document.querySelector('.nav-right');
+
+    function showImage(index) {
+      sliderImage.src = `img/${index}.jpg`;
+      sliderImage.alt = `Anı ${index}`;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      currentIndex = currentIndex === 1 ? totalImages : currentIndex - 1;
+      showImage(currentIndex);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      currentIndex = currentIndex === totalImages ? 1 : currentIndex + 1;
+      showImage(currentIndex);
+    });
+  </script>
 </body>
 </html>
