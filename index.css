@@ -177,6 +177,7 @@ footer {
   animation-name: fall;
   animation-timing-function: linear;
   animation-iteration-count: 1;
+  font-family: 'Segoe UI', sans-serif;
 }
 
 @keyframes fall {
@@ -188,4 +189,27 @@ footer {
     transform: translateY(110vh) rotate(360deg);
     opacity: 0;
   }
+}
+
+/* Müzik Başlat Butonu */
+
+.heart-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 24px;
+  background: transparent;
+  border: none;
+  color: #ff5e5e;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.3s ease;
+  padding: 5px 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #ff5e5e;
+}
+
+.heart-button:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 20px #ff3b3b;
 }

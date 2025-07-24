@@ -7,10 +7,11 @@
   <link rel="stylesheet" href="index.css" />
 </head>
 <body>
-  <button id="playBtn" style="margin:20px; padding:10px 20px; font-size:16px; cursor:pointer;">
-    Müziği Başlat
-  </button>
 
+  <!-- Müzik Başlat Butonu -->
+  <button id="playBtn" class="heart-button" title="Müziği Başlat">❤️ Müziği Başlat</button>
+
+  <!-- Arka Plan Müzik -->
   <audio id="bgm" loop>
     <source src="song.mp3" type="audio/mpeg" />
     Tarayıcınız ses çalmayı desteklemiyor.
@@ -30,12 +31,11 @@
     </ul>
   </section>
 
-  <section class="gallery">
-    <script>
-      for (let i = 1; i <= 40; i++) {
-        document.write(`<img src="img/${i}.jpg" alt="Anı ${i}">`);
-      }
-    </script>
+  <!-- Fotoğraf Slider -->
+  <section class="slider">
+    <button class="nav-arrow nav-left" id="prevBtn" aria-label="Önceki">&#10084;</button>
+    <img src="img/1.jpg" alt="Anı 1" class="active" />
+    <button class="nav-arrow nav-right" id="nextBtn" aria-label="Sonraki">&#10084;</button>
   </section>
 
   <section class="letter">
@@ -57,13 +57,71 @@
     "Bu sadece bir yıl değil aksine içimde büyüyen bir hikayeydi."
   </footer>
 
+  <!-- Kalp Yağmuru -->
+  <div id="heart-rain"></div>
+
   <script>
+    // Müzik Başlat Butonu
     const btn = document.getElementById('playBtn');
     const bgm = document.getElementById('bgm');
     btn.addEventListener('click', () => {
       bgm.play();
-      btn.style.display = 'none'; // butonu gizle
+      btn.style.display = 'none';
     });
+
+    // Fotoğraf Slider
+    const images = [];
+    for(let i=1; i<=40; i++) {
+      images.push(`img/${i}.jpg`);
+    }
+
+    let currentIndex = 0;
+    const slider = document.querySelector('.slider');
+    const imgElement = slider.querySelector('img');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    function showImage(index) {
+      imgElement.src = images[index];
+      imgElement.alt = `Anı ${index+1}`;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex -1 + images.length) % images.length;
+      showImage(currentIndex);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex +1) % images.length;
+      showImage(currentIndex);
+    });
+
+    // Başlangıç resmi
+    showImage(currentIndex);
+
+    // Kalp Yağmuru
+
+    const heartRainContainer = document.getElementById('heart-rain');
+
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.textContent = '1. Yıl ❤️';
+
+      heart.style.left = Math.random() * window.innerWidth + 'px';
+      heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+      heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      heart.style.animationDelay = Math.random() * 5 + 's';
+
+      heartRainContainer.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 7000);
+    }
+
+    // Sürekli kalp üret
+    setInterval(createHeart, 300);
   </script>
 </body>
 </html>
