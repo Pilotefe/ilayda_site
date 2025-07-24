@@ -7,7 +7,11 @@
   <link rel="stylesheet" href="index.css" />
 </head>
 <body>
-  <audio autoplay loop id="bgm">
+  <button id="playBtn" style="margin:20px; padding:10px 20px; font-size:16px; cursor:pointer;">
+    Müziği Başlat
+  </button>
+
+  <audio id="bgm" loop>
     <source src="song.mp3" type="audio/mpeg" />
     Tarayıcınız ses çalmayı desteklemiyor.
   </audio>
@@ -26,10 +30,12 @@
     </ul>
   </section>
 
-  <section class="gallery slider">
-    <button class="nav-arrow nav-left" aria-label="Önceki">&#10094;</button>
-    <img id="sliderImage" src="img/1.jpg" alt="Anı 1" />
-    <button class="nav-arrow nav-right" aria-label="Sonraki">&#10095;</button>
+  <section class="gallery">
+    <script>
+      for (let i = 1; i <= 40; i++) {
+        document.write(`<img src="img/${i}.jpg" alt="Anı ${i}">`);
+      }
+    </script>
   </section>
 
   <section class="letter">
@@ -52,26 +58,11 @@
   </footer>
 
   <script>
-    const totalImages = 40;
-    let currentIndex = 1;
-
-    const sliderImage = document.getElementById('sliderImage');
-    const prevBtn = document.querySelector('.nav-left');
-    const nextBtn = document.querySelector('.nav-right');
-
-    function showImage(index) {
-      sliderImage.src = `img/${index}.jpg`;
-      sliderImage.alt = `Anı ${index}`;
-    }
-
-    prevBtn.addEventListener('click', () => {
-      currentIndex = currentIndex === 1 ? totalImages : currentIndex - 1;
-      showImage(currentIndex);
-    });
-
-    nextBtn.addEventListener('click', () => {
-      currentIndex = currentIndex === totalImages ? 1 : currentIndex + 1;
-      showImage(currentIndex);
+    const btn = document.getElementById('playBtn');
+    const bgm = document.getElementById('bgm');
+    btn.addEventListener('click', () => {
+      bgm.play();
+      btn.style.display = 'none'; // butonu gizle
     });
   </script>
 </body>
