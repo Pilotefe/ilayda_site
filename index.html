@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>28 Temmuz 23:01</title>
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+  <audio autoplay loop id="bgm">
+    <source src="song.mp3" type="audio/mpeg" />
+    Tarayıcınız ses çalmayı desteklemiyor.
+  </audio>
+
+  <header>
+    <h1>28 Temmuz 2024, Saat 23:01</h1>
+    <p>Bir yıla rağmen artan duygularla...</p>
+  </header>
+
+  <section class="timeline">
+    <h2>Zaman Çizelgesi(only importants)</h2>
+    <ul>
+      <li>28 Temmuz 2024 – Sana çıkma teklif ettiğim gün</li>
+      <li>21 Eylül 2024 – İlk buluşmamız, ilk sarılmamız, ilk el ele tutuşmamız, ilk yürüyüşümüz, ilk fotoğrafımız, ilk yemek yememiz, ilk öpüşmemiz, ilk beraber uyumamız, ilk beraber uyanmamız,</li>
+      <li>22 Eylül 2024 – İlk beraber kahvaltımız, ilk gezmemiz, ilk uğurlama :/ </li>
+    </ul>
+  </section>
+
+  <section class="gallery slider">
+    <button class="nav-arrow nav-left" aria-label="Önceki">&#10094;</button>
+    <img id="sliderImage" src="img/1.jpg" alt="Anı 1" />
+    <button class="nav-arrow nav-right" aria-label="Sonraki">&#10095;</button>
+  </section>
+
+  <section class="letter">
+    <h2>Kalpten Bir Yazı</h2>
+    <p>
+      Seni tanıdığımda hayatımda pek de iyi bir yerde değildim. Duygusal olarak yorgun, kendimle uğraşan biriydim. Ama sen öyle hızlı, öyle güzel bir şekilde geldin ki toparlanmamı sağladın. Hatta sadece toparlanmak değil, daha önce hissetmediğim bir huzuru hissettirdin bana.
+
+      Bu bir yıl boyunca sevgim hep arttı. Evet, bazen kırgınlıklarımız oldu, tartıştık, hatta uzak kaldık... ama hiçbir zaman sevgim azalmadı. Çünkü sende bana iyi gelen bir şey vardı, bir ışık gibi. Ne yaşarsak yaşayalım, içimde hep o saf sevgi kalmaya devam etti.
+
+      En unutamadığım anlardan biri... daha beni hiç görmemişken, doğum günümde bana gönderdiğin o mesaj ve aldığın Lego hediyesiydi. O kadar ince düşünülmüştü ki, kalbimin içinde bir yere kazındı.
+
+      Şimdi her şey eskisi gibi olmasa da, hala hayatımdasın. Hala konuşuyoruz, sesini duyuyorum, bazen gülümsüyoruz. Her şeye rağmen kopmamış olmak bile bana yetiyor çoğu zaman.
+
+      Belki nereye gideceğimizi bilmiyoruz, belki bazı şeyler hala havada. Ama içimdeki yerin hala sabit. Zamanla, belki daha da sağlamlaşır. Belki de her şey yeniden daha güzel olur. Bilmiyorum. Ama bildiğim bir şey varsa; seni iyi ki tanıdım.
+    </p>
+  </section>
+
+  <footer>
+    "Bu sadece bir yıl değil aksine içimde büyüyen bir hikayeydi."
+  </footer>
+
+  <script>
+    const totalImages = 40;
+    let currentIndex = 1;
+
+    const sliderImage = document.getElementById('sliderImage');
+    const prevBtn = document.querySelector('.nav-left');
+    const nextBtn = document.querySelector('.nav-right');
+
+    function showImage(index) {
+      sliderImage.src = `img/${index}.jpg`;
+      sliderImage.alt = `Anı ${index}`;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      currentIndex = currentIndex === 1 ? totalImages : currentIndex - 1;
+      showImage(currentIndex);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      currentIndex = currentIndex === totalImages ? 1 : currentIndex + 1;
+      showImage(currentIndex);
+    });
+  </script>
+</body>
+</html>
