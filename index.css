@@ -213,3 +213,113 @@ footer {
   transform: scale(1.2);
   box-shadow: 0 0 20px #ff3b3b;
 }
+
+/* --- BURADAN SONRA EKLEMELER --- */
+
+/* Fade-in ve Scroll Parlama için başlangıç hali */
+.fade-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease, transform 1s ease, text-shadow 1s ease;
+}
+
+/* Görünür olduğunda */
+.visible-scroll {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  text-shadow: 0 0 10px #ff5e5e, 0 0 20px #ff5e5e !important;
+}
+#starry-night {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  background: transparent;
+  z-index: 1; /* Arka planda kalacak */
+  overflow: hidden;
+}
+
+/* 100 tane küçük yıldız için gölgelerle yaratıyoruz */
+#starry-night::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: transparent;
+  box-shadow:
+    20px 30px white,
+    50px 80px white,
+    90px 150px white,
+    120px 200px white,
+    170px 40px white,
+    220px 90px white,
+    260px 140px white,
+    310px 190px white,
+    350px 230px white,
+    400px 280px white,
+    450px 320px white,
+    490px 360px white,
+    530px 400px white,
+    580px 440px white,
+    620px 480px white,
+    670px 520px white,
+    700px 560px white,
+    740px 600px white,
+    780px 640px white,
+    820px 680px white;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  animation: twinkle 5s infinite alternate ease-in-out;
+  filter: drop-shadow(0 0 1px white);
+}
+
+/* İkinci grup yıldızlar farklı animasyon süresiyle */
+#starry-night::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: transparent;
+  box-shadow:
+    30px 50px white,
+    70px 120px white,
+    110px 170px white,
+    160px 220px white,
+    210px 60px white,
+    250px 110px white,
+    300px 160px white,
+    340px 210px white,
+    380px 250px white,
+    420px 300px white,
+    460px 340px white,
+    500px 380px white,
+    540px 420px white,
+    590px 460px white,
+    630px 500px white,
+    680px 540px white,
+    710px 580px white,
+    750px 620px white,
+    790px 660px white,
+    830px 700px white;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  animation: twinkle 6s infinite alternate ease-in-out;
+  filter: drop-shadow(0 0 1px white);
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+  100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+}

@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="index.css" />
 </head>
 <body>
-
+  <div id="starry-night"></div>
   <!-- Müzik Başlat Butonu -->
   <button id="playBtn" class="heart-button" title="Müziği Başlat">❤️ Müziği Başlat</button>
 
@@ -17,28 +17,28 @@
     Tarayıcınız ses çalmayı desteklemiyor.
   </audio>
 
-  <header>
+  <header class="fade-section">
     <h1>28 Temmuz 2024, Saat 23:01</h1>
     <p>Bir yıla rağmen artan duygularla...</p>
   </header>
 
-  <section class="timeline">
+  <section class="timeline fade-section">
     <h2>Zaman Çizelgesi(only importants)</h2>
     <ul>
       <li>28 Temmuz 2024 – Sana çıkma teklif ettiğim gün</li>
-      <li>21 Eylül 2024 – İlk buluşmamız, ilk sarılmamız, ilk el ele tutuşmamız, ilk yürüyüşümüz, ilk fotoğrafımız, ilk yemek yememiz, ilk öpüşmemiz, ilk beraber uyumamız, ilk beraber uyanmamız,</li>
+      <li>21 Eylül 2024 – İlk buluşmamız, ilk sarılmamız, ilk el ele tutuşmamız, ilk yürüyüşümüz, ilk fotoğrafımız, ilk yemek yememiz, ilk öpüşmemiz, ilk beraber uyumamız, ilk beraber uyanmamız.</li>
       <li>22 Eylül 2024 – İlk beraber kahvaltımız, ilk gezmemiz, ilk uğurlama :/ </li>
     </ul>
   </section>
 
   <!-- Fotoğraf Slider -->
-  <section class="slider">
+  <section class="slider fade-section">
     <button class="nav-arrow nav-left" id="prevBtn" aria-label="Önceki">&#10084;</button>
     <img src="img/1.jpg" alt="Anı 1" class="active" />
     <button class="nav-arrow nav-right" id="nextBtn" aria-label="Sonraki">&#10084;</button>
   </section>
 
-  <section class="letter">
+  <section class="letter fade-section">
     <h2>Kalpten Bir Yazı</h2>
     <p>
       seni tanıdığımda hayatım pek de iyi bir yerde değildi. duygusal olarak yorgundum, içimde karmaşalar vardı ve kendimle mücadele ediyordum. ama sen o kadar hızlı ve güzel geldin ki hayatıma, hemen toparlanmamı sağladın. sadece toparlanmak değil, daha önce hiç yaşamadığım bir huzuru hissettirdin bana. seninle birlikte hayatın renkleri yeniden canlandı, eksik kalan parçalar tamamlandı.
@@ -53,7 +53,7 @@ belki nereye gideceğimizi bilmiyoruz, belki bazı şeyler hala belirsiz. ama i�
     </p>
   </section>
 
-  <footer>
+  <footer class="fade-section">
     "Bu sadece bir yıl değil aksine içimde büyüyen bir hikayeydi."
   </footer>
 
@@ -122,6 +122,22 @@ belki nereye gideceğimizi bilmiyoruz, belki bazı şeyler hala belirsiz. ama i�
 
     // Sürekli kalp üret
     setInterval(createHeart, 300);
+
+    // Fade-in scroll animasyonu
+
+    const fadeSections = document.querySelectorAll('.fade-section');
+
+    function checkFade() {
+      fadeSections.forEach(sec => {
+        const rect = sec.getBoundingClientRect();
+        if(rect.top < window.innerHeight - 100) {
+          sec.classList.add('visible-scroll');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', checkFade);
+    window.addEventListener('load', checkFade);
   </script>
 </body>
 </html>
