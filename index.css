@@ -191,11 +191,11 @@ footer {
   }
 }
 
-/* Müzik Başlat Butonu */
+/* Müzik Başlat Butonu - Sağ Alt Sabit */
 
 .heart-button {
   position: fixed;
-  top: 20px;
+  bottom: 20px;
   right: 20px;
   font-size: 24px;
   background: transparent;
@@ -207,6 +207,7 @@ footer {
   padding: 5px 10px;
   border-radius: 10px;
   box-shadow: 0 0 10px #ff5e5e;
+  z-index: 10000;
 }
 
 .heart-button:hover {
@@ -214,21 +215,8 @@ footer {
   box-shadow: 0 0 20px #ff3b3b;
 }
 
-/* --- BURADAN SONRA EKLEMELER --- */
+/* Yıldızların bulunduğu #starry-night container */
 
-/* Fade-in ve Scroll Parlama için başlangıç hali */
-.fade-section {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 1s ease, transform 1s ease, text-shadow 1s ease;
-}
-
-/* Görünür olduğunda */
-.visible-scroll {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-  text-shadow: 0 0 10px #ff5e5e, 0 0 20px #ff5e5e !important;
-}
 #starry-night {
   position: fixed;
   top: 0;
@@ -237,11 +225,12 @@ footer {
   height: 100vh;
   pointer-events: none;
   background: transparent;
-  z-index: 1; /* Arka planda kalacak */
+  z-index: 1;
   overflow: hidden;
 }
 
-/* 40 tane küçük yıldız için gölgelerle yaratıyoruz */
+/* Yıldızlar - animasyonlu sağa sola ve yukarı aşağı hareket */
+
 #starry-night::before {
   content: "";
   position: absolute;
@@ -291,11 +280,10 @@ footer {
   width: 2px;
   height: 2px;
   border-radius: 50%;
-  animation: twinkle 5s infinite alternate ease-in-out;
+  animation: twinkleMove 15s infinite ease-in-out alternate;
   filter: drop-shadow(0 0 1px white);
 }
 
-/* İkinci grup yıldızlar farklı animasyon süresiyle */
 #starry-night::after {
   content: "";
   position: absolute;
@@ -346,21 +334,34 @@ footer {
   width: 2px;
   height: 2px;
   border-radius: 50%;
-  animation: twinkle 6s infinite alternate ease-in-out;
+  animation: twinkleMoveReverse 18s infinite ease-in-out alternate;
   filter: drop-shadow(0 0 1px white);
 }
 
-@keyframes twinkle {
-  0% {
-    opacity: 0.2;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.3);
-  }
-  100% {
-    opacity: 0.2;
-    transform: scale(1);
-  }
+@keyframes twinkleMove {
+  0%   { transform: translateX(0) translateY(0) scale(1); opacity: 0.7; }
+  50%  { transform: translateX(10px) translateY(5px) scale(1.1); opacity: 1; }
+  100% { transform: translateX(0) translateY(0) scale(1); opacity: 0.7; }
+}
+
+@keyframes twinkleMoveReverse {
+  0%   { transform: translateX(0) translateY(0) scale(1); opacity: 0.7; }
+  50%  { transform: translateX(-10px) translateY(-5px) scale(1.1); opacity: 1; }
+  100% { transform: translateX(0) translateY(0) scale(1); opacity: 0.7; }
+}
+
+/* --- BURADAN SONRA EKLEMELER --- */
+
+/* Fade-in ve Scroll Parlama için başlangıç hali */
+.fade-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease, transform 1s ease, text-shadow 1s ease;
+}
+
+/* Görünür olduğunda */
+.visible-scroll {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  text-shadow: 0 0 10px #ff5e5e, 0 0 20px #ff5e5e !important;
 }
